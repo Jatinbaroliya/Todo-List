@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
+import logo from './src/assets/todo.png';
 
 
 function App() {
