@@ -3,6 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
+
 function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
@@ -73,8 +74,8 @@ function App() {
         <div className="font-bold text-[20px] text-center">My-Task - Manage your todos at one Place</div>
         <div className='font-bold text-[17px] m-3'>Add a Todo</div>
         <div className='flex justify-between'>
-          <input onChange={handleChange} onKeyDown={handleKeyDown} value={todo} type="text" className="rounded-full w-[80%] py-1 px-5 outline-none " />
-          <button onClick={handleAdd} disabled={todo.length < 1} className='rounded-full bg-purple-600 w-14 disabled:bg-purple-500 cursor-pointer'>Save</button>
+          <input onChange={handleChange} onKeyDown={handleKeyDown} value={todo} type="text" placeholder='Write your Todo here' className="rounded-full w-[80%] py-1 px-5 outline-none " />
+          <button onClick={handleAdd} disabled={todo.length < 1} className='rounded-full bg-purple-600 w-16 disabled:bg-purple-500 cursor-pointer'>Save</button>
         </div>
         <input className='mr-2 my-6 cursor-pointer' id='show' onChange={toggleFinished} type="checkbox" checked={showFinished} />
         <label className='my-6'>Show Finished </label>
@@ -84,12 +85,12 @@ function App() {
           {todos.length === 0 && <div className='m-5'>No Todos to display</div>}
           {todos.map(item => {
             return (showFinished || !item.isCompleted) && <div key={item.id} className='flex'>
-              <input className='mx-4 cursor-pointer' name={item.id} onChange={() => handleCheckbox(item.id)} type="checkbox" checked={item.isCompleted} id='' />
-              <div className={`w-[250px] text-purple-900 ${item.isCompleted ? "line-through" : ""}`}>
+             <div className='mt-1'><input className='mx-4 cursor-pointer' name={item.id} onChange={() => handleCheckbox(item.id)} type="checkbox" checked={item.isCompleted} id='' /></div>
+              <div className={`w-[250px] break-words text-purple-900 ${item.isCompleted ? "line-through" : ""}`}>
                 {item.todo}
               </div>
-              <button onClick={(e) => { handleEdit(e, item.id) }} className='mx-2 text-[20px]'><FaEdit /></button>
-              <button onClick={(e) => { handleDelete(e, item.id) }} className='mx-2 text-[21px]'><MdDelete /></button>
+              <div className='mt-1'><button onClick={(e) => { handleEdit(e, item.id) }} className='mx-2 text-[20px]'><FaEdit /></button></div>
+              <div className='mt-1'><button onClick={(e) => { handleDelete(e, item.id) }} className='mx-2 text-[21px]'><MdDelete /></button></div>
             </div>
           })}
         </div>
